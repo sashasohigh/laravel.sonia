@@ -12,7 +12,9 @@ class ReferController extends Controller
 {
     public function index()
     {
-        $links = Refer::where('is_active', 1)->get();
+        $links = Refer::where('is_active', 1)
+        ->where('expires_at', '>', Carbon::now())
+        ->get();
         $table = view('components.table_links', compact('links'))->render();
         return view('home', compact('table'));
     }
@@ -25,7 +27,7 @@ class ReferController extends Controller
             abort(404);
         }
 
-        return view('page', compact('page'));
+        return view('single', compact('page'));
     }
 
     public function create()
@@ -61,7 +63,6 @@ class ReferController extends Controller
         }
     }
     
-
     public function table_links() {
         $links = $this->store();
         return view('components.table_links', compact('links'))->render();
