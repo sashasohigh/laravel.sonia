@@ -1,0 +1,4 @@
+#phone_input::-webkit-outer-spin-button,
+#phone_input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
