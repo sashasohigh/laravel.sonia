@@ -19,7 +19,7 @@ class ReferController extends Controller
         return view('home', compact('table'));
     }
 
-    public function single(Request $request)
+    public function show(Request $request)
     {
         $page = Refer::where('unique_url', $request->refer)->first();
 
@@ -27,7 +27,7 @@ class ReferController extends Controller
             abort(404);
         }
 
-        return view('single', compact('page'));
+        return view('show', compact('page'));
     }
 
     public function create()
@@ -42,7 +42,7 @@ class ReferController extends Controller
         ]);
 
         $data = [
-            'url' => route('single', ['refer' => $link->unique_url]),
+            'url' => route('show', ['refer' => $link->unique_url]),
             'link' => $link->unique_url,
             'date' => $link->expires_at->format('d.m.Y'),
         ];

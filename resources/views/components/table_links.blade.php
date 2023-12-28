@@ -8,7 +8,7 @@
 <tbody>
     @foreach ($links as $link)
     <tr>
-        <td><a href="{{ route('single', ['refer' => $link->unique_url]) }}">{{ $link->unique_url }}</a></td>
+        <td><a href="{{ route('show', ['refer' => $link->unique_url]) }}">{{ $link->unique_url }}</a></td>
         <td>{{ \Carbon\Carbon::parse($link->expires_at)->format('d.m.Y') }}</td>
     </tr>
     @endforeach

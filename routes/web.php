@@ -21,7 +21,7 @@ Route::post('/register', [UserController::class, 'register'])->name('register.su
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [ReferController::class, 'index'])->name('home');
 
-    Route::get('/single', [ReferController::class, 'single'])->name('single');
+    Route::get('/show', [ReferController::class, 'show'])->name('show');
     Route::get('/create', [ReferController::class, 'create'])->name('create');
     Route::get('/deactivate/{id}', [ReferController::class, 'deactivate'])->name('deactivate');
 
