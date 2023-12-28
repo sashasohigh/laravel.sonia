@@ -12,9 +12,6 @@ class ReferController extends Controller
 {
     public function index()
     {
-        if (!Auth::check()) {
-            return redirect()->route('register');
-        }
         $links = Refer::where('is_active', 1)->get();
         $table = view('components.table_links', compact('links'))->render();
         return view('home', compact('table'));
@@ -30,13 +27,6 @@ class ReferController extends Controller
 
         return view('page', compact('page'));
     }
-
-    
-    // public function store()
-    // {
-    //     $links = Refer::where('is_active', 1)->get();
-    //     return $links;
-    // }
 
     public function create()
     {

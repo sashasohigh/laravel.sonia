@@ -32,6 +32,5 @@
             </div>
         </div>
     </div>
-    {{-- <p><a href="{{ route('page', ['link' => 'test']) }}">asd</a></p> --}}
 </div>
 @endsection

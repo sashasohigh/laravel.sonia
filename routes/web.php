@@ -15,18 +15,20 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', [ReferController::class, 'index'])->name('home');
-
 Route::get('/register', [UserController::class, 'registerForm'])->name('register');
 Route::post('/register', [UserController::class, 'register'])->name('register.submit');
 
-Route::get('/store', [ReferController::class, 'store'])->name('store');
-Route::get('/single', [ReferController::class, 'single'])->name('single');
-Route::get('/create', [ReferController::class, 'create'])->name('create');
-Route::get('/deactivate/{id}', [ReferController::class, 'deactivate'])->name('deactivate');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/', [ReferController::class, 'index'])->name('home');
 
-Route::get('/table_links', [ReferController::class, 'table_links'])->name('table_links');
+    Route::get('/single', [ReferController::class, 'single'])->name('single');
+    Route::get('/create', [ReferController::class, 'create'])->name('create');
+    Route::get('/deactivate/{id}', [ReferController::class, 'deactivate'])->name('deactivate');
 
-Route::get('/game', [GameController::class, 'game'])->name('game');
-Route::get('/history', [GameController::class, 'history'])->name('history');
+    Route::get('/table_links', [ReferController::class, 'table_links'])->name('table_links');
+
+    Route::get('/game', [GameController::class, 'game'])->name('game');
+    Route::get('/history', [GameController::class, 'history'])->name('history');
+});
+
+
